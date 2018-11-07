@@ -64,3 +64,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.5"
 
 gem "bcrypt", "~> 3.1"
+
+gem "bootstrap", "~> 4.1"
+
+gem "jquery-rails", "~> 4.3"
