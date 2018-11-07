@@ -10,6 +10,36 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Gamificação</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Users", users_path, class: "nav-link" %>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+          <li>
+            <%= link_to current_user.email, user_path(current_user), class: "nav-link" %>
+          </li>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>  
+          </li>
+            <% else %>
+              <li>
+                <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+              </li>
+            <% end %>
+        </ul>
+      </div>
+    </nav>
+
+
     <%= yield %>
   </body>
 </html>
