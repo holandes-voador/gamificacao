@@ -57,6 +57,8 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.9.0)
@@ -216,9 +218,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autoprefixer-rails (~> 9.3.1)
   bcrypt (~> 3.1)
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.1)
+  bootstrap-sass (~> 3.2.0)
   byebug
   capybara (>= 2.15)
   chromedriver-helper
@@ -240,7 +244,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.5.3p105
 
 BUNDLED WITH
-   1.16.5
+   1.17.1
