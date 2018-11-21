@@ -19,13 +19,16 @@
         <td><%= notice.body %></td>
         <td><%= notice.author %></td>
         <td><%= link_to 'Show', notice %></td>
-        <td><%= link_to 'Edit', edit_notice_path(notice) %></td>
-        <td><%= link_to 'Destroy', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.admin? %>
+            <td><%= link_to 'Edit', edit_notice_path(notice) %></td>
+            <td><%= link_to 'Destroy', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Notice', new_notice_path %>
+<% if current_user.admin? %>
+    <%= link_to 'New Notice', new_notice_path %>
+<% end %>
