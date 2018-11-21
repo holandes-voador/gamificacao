@@ -1,0 +1,9 @@
+<ul>
+  <% @feed_items.each do |item| %>
+    <% if item.is_a? Event %>
+      <li><%= item.name %>****<%= item.created_at %></li>
+    <% else %>
+      <li><%= item.title %>****<%= item.created_at %></li>
+    <% end %>
+  <% end %>
+</ul>

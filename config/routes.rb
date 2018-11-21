@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'feed/index'
   resources :rewards
   resources :events
   devise_for :users
