@@ -18,9 +18,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to "Usuários", users_path, class: "nav-link" %>
-          </li>
+          <% if current_user.admin? %>
+              <li class="nav-item active">
+                <%= link_to "Usuários", users_path, class: "nav-link" %>
+              </li>
+          <% end %>
           <li>
             <%= link_to "Feed", feed_index_path, class: "nav-link" %>
           </li>
