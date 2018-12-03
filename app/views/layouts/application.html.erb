@@ -5,34 +5,37 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'true' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'true' %>
+    <link href="https://blackrockdigital.github.io/startbootstrap-freelancer/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://blackrockdigital.github.io/startbootstrap-freelancer/css/freelancer.min.css" rel="stylesheet">
   </head>
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase">
       <a class="navbar-brand" href="#">Gamificação</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
+
           <% if user_signed_in? and current_user.admin? %>
-              <li class="nav-item active">
+              <li class="nav-item mx-0 mx-lg-1">
                 <%= link_to "Usuários", users_path, class: "nav-link" %>
               </li>
-          <% end %>
-          <li>
+
+          <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Feed", feed_index_path, class: "nav-link" %>
           </li>
-          <li>
+          <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Eventos", events_path, class: "nav-link" %>
           </li>
-          <li>
+          <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Noticias", notices_path, class: "nav-link" %>
           </li>
-          <li>
+          <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Recompensas", rewards_path, class: "nav-link" %>
           </li>
         </ul>
@@ -42,7 +45,7 @@
             <%= link_to current_user.email, user_path(current_user), class: "nav-link" %>
           </li>
           <li>
-            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>  
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
           </li>
             <% else %>
               <li>
@@ -54,6 +57,21 @@
     </nav>
 
 
-    <%= yield %>
+    <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                  <%= yield %>
+                  
+
+                </div>
+            </div>
+
+            <!-- /.row -->
+
+        </div>
+
+        <style>body{padding-top:70px}</style>
+
   </body>
 </html>
