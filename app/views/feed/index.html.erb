@@ -2,8 +2,10 @@
   <% @feed_items.each do |item| %>
     <% if item.is_a? Event %>
       <li><%= item.name %>****<%= item.created_at %></li>
+      <li><%= item.like %></li>
     <% else %>
       <li><%= item.title %>****<%= item.created_at %></li>
+      <li><%= item.like %></li>
     <% end %>
   <% end %>
 </ul>
