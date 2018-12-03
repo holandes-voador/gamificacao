@@ -1,15 +1,17 @@
 class LikesController < ApplicationController
   def like_event
-    @user = current_user.id
+    @user = current_user
     @event = params[:event_id]
 
-    @like = Like.find_by(user_id: @user, event_id: @event)
+    @like = Like.find_by(user: @user, event_id: @event)
 
     return 400 if @like
 
-    @like = Like.new(user_id: @user, event_id: @event)
+    @like = Like.new(user: @user, event_id: @event)
 
     if @like.save!
+      @user.score = @user.score + 0.1
+      @user.save!
       redirect_to feed_index_path
     else
       redirect_to root_path
@@ -27,16 +29,18 @@ class LikesController < ApplicationController
   end
 
   def like_notice
-    @user = current_user.id
+    @user = current_user
     @notice = params[:notice_id]
 
-    @like = Like.find_by(user_id: @user, notice_id: @notice)
+    @like = Like.find_by(user: @user, notice_id: @notice)
 
     return 400 if @like
 
-    @like = Like.new(user_id: @user, notice_id: @notice)
+    @like = Like.new(user: @user, notice_id: @notice)
 
     if @like.save!
+      @user.score = @user.score + 0.1
+      @user.save!
       redirect_to feed_index_path
     else
       redirect_to root_path
