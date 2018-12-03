@@ -2,8 +2,12 @@
   <% @feed_items.each do |item| %>
     <% if item.is_a? Event %>
       <li><%= item.name %>****<%= item.created_at %></li>
+      <li><%= link_to "Like", event_like_path(item), method: :post %></li>
+      <br>
     <% else %>
       <li><%= item.title %>****<%= item.created_at %></li>
+      <li><%= link_to "Like", notice_like_path(item), method: :post %></li>
+      <br>
     <% end %>
   <% end %>
 </ul>
