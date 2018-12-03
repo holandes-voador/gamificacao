@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_230019) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "registration"
-    t.string "score"
+    t.float "score", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
