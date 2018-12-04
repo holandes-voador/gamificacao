@@ -1,13 +1,34 @@
 <ul>
   <% @feed_items.each do |item| %>
     <% if item.is_a? Event %>
-      <li><%= item.name %>****<%= item.created_at %></li>
+      <h4>Evento <%= link_to item.name, item %> </h4>
+      <li><%= item.desc%></li>
+      <li> <b>Local</b> <%= item.place %></li>
+      <li> <b>Data</b> <%= item.date %></li>
       <li><%= link_to "Like", event_like_path(item), method: :post %></li>
+      <ul>
+          <b>Comentários</b> <br>
+          <% item.comments[0..3].each do |comment| %>
+              <b><%= comment.user.name %></b>
+              <li><%= comment.body %></li>
+          <% end %>
+      </ul>
       <br>
+      <hr>
     <% else %>
-      <li><%= item.title %>****<%= item.created_at %></li>
+      <h4>Notícia</h4>
+      <h5><b>Título: </b> <%= link_to item.title, item %></h5>
+      <li><%= item.body %></li>
       <li><%= link_to "Like", notice_like_path(item), method: :post %></li>
+      <ul>
+          <b>Comentários</b> <br>
+          <% item.comments[0..3].each do |comment| %>
+              <b><%= comment.user.name %></b>
+              <li><%= comment.body %></li>
+          <% end %>
+      </ul>
       <br>
+      <hr>
     <% end %>
   <% end %>
 </ul>

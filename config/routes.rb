@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :events do
     post 'likes/like_event', as: 'like'
+    post 'comments/create', as: 'new_comment'
   end
 
   devise_for :users
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :notices do
     post 'likes/like_notice', as: 'like'
+    post 'comments/create', as: 'new_comment'
   end
 
   root to: 'users#index'
