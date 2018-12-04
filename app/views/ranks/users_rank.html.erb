@@ -1,0 +1,15 @@
+<table class='table'>
+    <tr>
+        <th># Posição</th>
+        <th># Nome</th>
+        <th># Score</th>
+    </tr>
+    <% @users.each_with_index do |user, index| %>
+        <tr>
+            <td><%=index + 1%></td>
+            <td><%=user.name%></td>
+            <td><%=user.score%></td>
+        </tr>
+    <% end %>
+</table>
+    

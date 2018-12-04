@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     post 'comments/create', as: 'new_comment'
   end
 
+  get 'ranks/users_rank', as: 'users_rank'
+
   root to: 'users#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
