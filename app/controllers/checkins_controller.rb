@@ -1,4 +1,5 @@
 class CheckinsController < ApplicationController
+  CHECKIN_SCORE = 0.2
 
   def create
     @event = Event.find_by(id: params[:event_id])
@@ -13,6 +14,8 @@ class CheckinsController < ApplicationController
     @checkin = Checkin.new(user: @user, event: @event, date: DateTime.now)
 
     if @checkin.save
+      @user.score = @user.score + CHECKIN_SCORE
+      @user.save!
       redirect_to @event, notice: 'Checked-in to the event with success!'
     else
       redirect_to @event, notice: 'Error when trying to check-in :(' and return
