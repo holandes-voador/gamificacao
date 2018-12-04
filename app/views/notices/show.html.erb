@@ -35,5 +35,8 @@
 	<br>
   <% end %>
 </ul>
-<%= link_to 'Edit', edit_notice_path(@notice) %> |
+<% if current_user.admin? %>
+    <%= link_to 'Edit', edit_notice_path(@notice) %> |
+<% end %>
+
 <%= link_to 'Back', notices_path %>
