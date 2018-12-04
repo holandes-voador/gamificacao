@@ -39,6 +39,9 @@
           <li class="nav-item mx-0 mx-lg-1">
             <%= link_to "Recompensas", rewards_path, class: "nav-link" %>
           </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <%= link_to "Rank", users_rank_path, class: "nav-link" %>
+          </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? and current_user %>

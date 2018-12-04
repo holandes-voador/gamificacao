@@ -70,6 +70,6 @@ class RewardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reward_params
-      params.require(:reward).permit(:title, :description)
+      params.require(:reward).permit(:title, :description, :cost)
     end
 end
