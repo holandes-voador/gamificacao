@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  LIKE_SCORE = 0.1
   def like_event
     @user = current_user
     @event = params[:event_id]
@@ -9,16 +10,10 @@ class LikesController < ApplicationController
 
     @like = Like.new(user: @user, event_id: @event)
 
-    if @like.save!
-      @user.score = @user.score + 0.1
-      @user.save!
-      redirect_to feed_index_path
-    else
-      redirect_to root_path
-    end
-
     respond_to do |format|
       if @like.save
+        @user.score = @user.score + LIKE_SCORE
+        @user.save!
         format.html { redirect_to feed_index_path, notice: 'Liked the event!!' } and return
         # format.json { render json: 'Like for event created', status: :created }
       else
@@ -38,16 +33,11 @@ class LikesController < ApplicationController
 
     @like = Like.new(user: @user, notice_id: @notice)
 
-    if @like.save!
-      @user.score = @user.score + 0.1
-      @user.save!
-      redirect_to feed_index_path
-    else
-      redirect_to root_path
-    end
-
     respond_to do |format|
       if @like.save
+        @user.score = @user.score + LIKE_SCORE
+        @user.save!
+
         format.html { redirect_to feed_index_path, notice: 'Liked the notice!!' } and return
         # format.json { render json: 'Like for notice created', status: :created }
       else

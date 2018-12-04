@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  COMMENT_SCORE = 0.1
   def create
     @user = current_user
 
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        @user.score = @user.score + COMMENT_SCORE
         format.html { redirect_to @item, notice: 'Comment was successfully created.' }
       else
         format.html { render :new }
