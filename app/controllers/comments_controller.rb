@@ -20,6 +20,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @user.score = @user.score + COMMENT_SCORE
+        @user.save!
         format.html { redirect_to @item, notice: 'Comment was successfully created.' }
       else
         format.html { render :new }
