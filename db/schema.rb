@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_014353) do
+ActiveRecord::Schema.define(version: 2018_12_04_032617) do
 
   create_table "checkins", force: :cascade do |t|
     t.integer "user_id"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2018_12_04_014353) do
   create_table "notices", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
