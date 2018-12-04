@@ -20,5 +20,20 @@
   <%= @event.place %>
 </p>
 
+<hr>
+
+<h4>Comentários</h4>
+
+<%= form_with url: event_new_comment_path(@event) do |form| %>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

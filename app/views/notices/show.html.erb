@@ -15,5 +15,18 @@
   <%= @notice.author %>
 </p>
 
+<h4>Comentários</h4>
+
+<%= form_with url: notice_new_comment_path(@notice) do |form| %>
+  <div class="field">
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_notice_path(@notice) %> |
 <%= link_to 'Back', notices_path %>
