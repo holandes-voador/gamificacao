@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Matrícula</th>
+            <th>Presente</th>
+            <th>Marcar presença</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @checkins.each do |checkin| %>
+            <tr>
+                <td><%=checkin.user.name %></td>
+                <td><%=checkin.user.registration %></td>
+                <td><%= if checkin.present then 'Sim' else 'Não' end%></td>
+                <%= form_with url: event_presence_checkin_path(@event) do |form| %>
+                  <td>
+                    <%= form.label 'Presente' %>
+                    <%= form.check_box :present, {checked: checkin.present} %>
+                  </td>
+                  <td>
+                      <%= form.submit %>
+                  </td>
+                <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<%= link_to 'Back',  @event%>
