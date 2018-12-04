@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :events do
     post 'likes/like_event', as: 'like'
     post 'comments/create', as: 'new_comment'
+    post 'checkins/create', as: 'new_checkin'
   end
 
   devise_for :users
