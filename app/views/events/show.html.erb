@@ -35,5 +35,13 @@
   </div>
 <% end %>
 
+<ul>
+  <% @event.comments.each do |comment| %>
+	<h5><%= comment.user.name %></h5>
+	<li><%= comment.body %></li>
+	<br>
+  <% end %>
+</ul>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

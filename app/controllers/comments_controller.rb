@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   COMMENT_SCORE = 0.1
+
   def create
     @user = current_user
 
@@ -14,6 +15,7 @@ class CommentsController < ApplicationController
     end
 
     @comment.user = @user
+    @comment.body = params[:body]
 
     respond_to do |format|
       if @comment.save
@@ -23,12 +25,5 @@ class CommentsController < ApplicationController
         format.html { render :new }
       end
     end
-
-    if @comment.save!
-
-    else
-
-    end
   end
-
 end
