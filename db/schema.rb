@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_12_04_014353) do
     t.integer "user_id"
     t.integer "event_id"
     t.datetime "date"
-    t.boolean "present"
+    t.boolean "present", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_checkins_on_event_id"

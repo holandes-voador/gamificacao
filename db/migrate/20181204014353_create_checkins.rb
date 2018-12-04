@@ -4,7 +4,7 @@ class CreateCheckins < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.references :event, foreign_key: true
       t.datetime :date
-      t.boolean :present
+      t.boolean :present, default: false
 
       t.timestamps
     end
