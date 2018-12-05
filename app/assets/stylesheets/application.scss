@@ -12,4 +12,82 @@
  *
  *= require_self
  */
-@import "bootstrap"
+ @import "bootstrap";
+ @import "*";
+ //= require jquery
+ //= require jquery_ujs
+ //= require bootstrap
+ //= require bindWithDelay
+ //= require jquery.datetimepicker
+ //= require_tree .
+
+ .heart {
+   width: 100px;
+   height: 100px;
+   position: absolute;
+   transform: translate(50%, -50%);
+   background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+   background-position: 0 0;
+   cursor: pointer;
+   animation: fave-heart 2s steps(28);
+ }
+ .heart:hover {
+   background-position: -2800px 0;
+   transition: background 1s steps(28);
+ }
+
+ body {
+            background-color: #eeeeee;
+        }
+
+        .h7 {
+            font-size: 0.8rem;
+        }
+
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+        }
+
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+            .gedf-card {
+                margin-bottom: 0.77rem;
+            }
+        }
+
+        /**Reset Bootstrap*/
+        .dropdown-toggle::after {
+            content: none;
+            display: none;
+        }
+        .post-footer-option li{
+            float:left;
+            margin-right:50px;
+            padding-bottom:15px;
+        }
+
+        .post-footer-option li a{
+            color:#AFB4BD;
+            font-weight:500;
+            font-size:1.3rem;
+        }
+
+        .photo-profile{
+            border:1px solid #DDD;
+        }
+
+        .anchor-username h4{
+            font-weight:bold;
+        }
+
+        .anchor-time{
+            color:#ADB2BB;
+            font-size:1.2rem;
+        }
+
+        .post-footer-comment-wrapper{
+            background-color:#F6F7F8;
+        }
