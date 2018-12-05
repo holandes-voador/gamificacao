@@ -12,7 +12,7 @@
       <br>
       <b>Data:</b> <%= item.date.strftime("%d/%m/%y Horário %H:%M") %>
       <br>
-      <b>Numero de comentários:  <%= item.comments.length %></b>
+      <b>Likes:  <%= item.likes.length %></b>
       <br>
       <%= link_to event_like_path(item),  method: :post  do %><i class="heart"></i><% end %>
       <hr>
@@ -25,9 +25,9 @@
       <h4>Notícia: <%= link_to item.title, item %></h4>
       <b>Descrição:</b> <%= item.body%>
       <br>
-      <b>Numero de comentários: <%= item.comments.length %></b>
+      <b>Likes:  <%= item.likes.length %></b>
             <br>
-    <%= link_to event_like_path(item),  method: :post  do %><i class="heart"></i><% end %>
+    <%= link_to notice_like_path(item),  method: :post  do %><i class="heart"></i><% end %>
       <hr>
       </div>
     <% end %>
