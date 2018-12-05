@@ -1,24 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
 
-<p>
-  <strong>Desc:</strong>
+  <h4><%= @event.name %></h4>
+  <strong>Descrição:</strong>
   <%= @event.desc %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Place:</strong>
+  <br>
+  <strong>Data:</strong>
+  <%= @event.date.strftime("%d/%m/%y às %H:%M") %>
+  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <strong>Local:</strong>
   <%= @event.place %>
-</p>
 
 <hr>
 
@@ -30,29 +20,44 @@
 	<%= link_to "Lista de participantes", event_list_checkins_path(@event) %>
 <% end %>
 
-<h4>Comentários</h4>
 
 <%= form_with url: event_new_comment_path(@event) do |form| %>
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_field :body %>
+    <%= form.text_field :body, placeholder: "Escreva seu comentário..."%>
   </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit :Enviar %>
   </div>
 <% end %>
+<hr>
 
-<ul>
   <% @event.comments.each do |comment| %>
-	<h5><%= comment.user.name %></h5>
-	<li><%= comment.body %></li>
-	<br>
+  <div class="card gedf-card" >
+         <div class="card-header">
+             <div class="d-flex justify-content-between align-items-center">
+                 <div class="d-flex justify-content-between align-items-center">
+                     <div class="mr-2">
+                         <img class="rounded-circle" width="45" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="">
+                     </div>
+                     <div class="ml-2">
+                         <div class="h5 m-0" align="left"><%=comment.user.name %></div>
+                         <div class="h7 text-muted"><%= comment.created_at.strftime("%d/%m/%y às %H:%M") %></div>
+                     </div>
+                 </div>
+             </div>
+
+         </div>
+         <div class="card-body">
+             <p align="left" class="card-text">
+                    <%= comment.body %>
+                 </p>
+         </div>
+     </div>
+     <!-- Post /////-->
   <% end %>
-</ul>
 
 <% if current_user.admin? %>
 	<%= link_to 'Edit', edit_event_path(@event) %> |
 <% end %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Voltar', events_path %>

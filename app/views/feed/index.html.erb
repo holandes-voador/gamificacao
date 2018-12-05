@@ -1,34 +1,34 @@
-<ul>
+
   <% @feed_items.each do |item| %>
     <% if item.is_a? Event %>
-      <h4>Evento <%= link_to item.name, item %> </h4>
-      <li><%= item.desc%></li>
-      <li> <b>Local</b> <%= item.place %></li>
-      <li> <b>Data</b> <%= item.date %></li>
-      <li><%= link_to "Like", event_like_path(item), method: :post %></li>
-      <ul>
-          <b>Comentários</b> <br>
-          <% item.comments[0..3].each do |comment| %>
-              <b><%= comment.user.name %></b>
-              <li><%= comment.body %></li>
-          <% end %>
-      </ul>
+    <div class="card" style="margin: auto; width: 50rem;">
+    <div class="mr-2">
+        <img class="rounded-circle" width="45" src="https://scontent.fbsb4-1.fna.fbcdn.net/v/t1.0-1/p320x320/17553892_1878772902410243_1240340148688326723_n.jpg?_nc_cat=101&_nc_ht=scontent.fbsb4-1.fna&oh=52c6913f3a756b1b103d8580b7fcd59a&oe=5CAC1E56" alt="">
+    </div>
+      <h4>Evento: <%= link_to item.name, item %> </h4>
+      <b>Descrição:</b> <%= item.desc%>
       <br>
+      <b>Local:</b> <%= item.place %>
+      <br>
+      <b>Data:</b> <%= item.date.strftime("%d/%m/%y Horário %H:%M") %>
+      <br>
+      <b>Numero de comentários:  <%= item.comments.length %></b>
+      <br>
+      <%= link_to event_like_path(item),  method: :post  do %><i class="heart"></i><% end %>
       <hr>
+      </div>
     <% else %>
-      <h4>Notícia</h4>
-      <h5><b>Título: </b> <%= link_to item.title, item %></h5>
-      <li><%= item.body %></li>
-      <li><%= link_to "Like", notice_like_path(item), method: :post %></li>
-      <ul>
-          <b>Comentários</b> <br>
-          <% item.comments[0..3].each do |comment| %>
-              <b><%= comment.user.name %></b>
-              <li><%= comment.body %></li>
-          <% end %>
-      </ul>
+        <div class="card" style="margin: auto; width: 50rem;">
+    <div class="mr-2">
+        <img class="rounded-circle" width="45" src="https://scontent.fbsb4-1.fna.fbcdn.net/v/t1.0-1/p320x320/17553892_1878772902410243_1240340148688326723_n.jpg?_nc_cat=101&_nc_ht=scontent.fbsb4-1.fna&oh=52c6913f3a756b1b103d8580b7fcd59a&oe=5CAC1E56" alt="">
+    </div>
+      <h4>Notícia: <%= link_to item.title, item %></h4>
+      <b>Descrição:</b> <%= item.body%>
       <br>
+      <b>Numero de comentários: <%= item.comments.length %></b>
+            <br>
+    <%= link_to event_like_path(item),  method: :post  do %><i class="heart"></i><% end %>
       <hr>
+      </div>
     <% end %>
   <% end %>
-</ul>

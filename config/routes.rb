@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   get 'ranks/users_rank', as: 'users_rank'
 
-  root to: 'users#index'
+  root to: 'feed#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
